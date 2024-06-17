@@ -16,9 +16,6 @@ io.on('connection', (socket) => {
     socket.on('disconnect', () => {
         console.log('user disconnected');
     });
-});
-
-io.on('connection', (socket) => {
     socket.on('chat message', (msg) => {
         // // If you want to send a message to everyone except for a certain emitting 
         // // socket, we have the broadcast flag for emitting from that socket:
@@ -28,6 +25,12 @@ io.on('connection', (socket) => {
         // this will emit the event to all connected sockets
         io.emit('chat message', msg);
         console.log(msg)
+    });
+
+    socket.on('location actualization', (location) => {
+        
+        io.emit('location actualization', location);
+        console.log(location)
     });
 });
 
